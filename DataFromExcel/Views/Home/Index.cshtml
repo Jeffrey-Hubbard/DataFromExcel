@@ -1,0 +1,42 @@
+﻿
+
+<div class="jumbotron">
+    <h1>Academy Sales - Analysis Page</h1>
+    <p class="lead">Upload sales history to update the Academy Sales records and see the analysis.</p>
+    
+</div>
+
+<div class="container-fluid">
+    <div class="row no-gutters m-3">
+        <div class="card col-md-6 mx-auto shadow">
+            <div class="card-body">
+                <div class="card-title">
+                    <h3>Download our Template</h3>
+                    <div class="card-text">
+                        @Html.ActionLink("Click here to download", "DownloadFile", new { fileName = "SalesTemplate.xlsx" })
+                        <br />
+                        <h3>Or, download this sample spreadsheet!</h3>
+                        @Html.ActionLink("Click here to download", "DownloadFile", new { fileName = "SalesTemplateFull.xlsx" })
+                    </div>
+                        
+                </div>
+            </div>
+        </div>
+        <div class="card col-md-6 mx-auto shadow">
+            <div class="card-body">
+                <div class="card-title">
+                    <h3>Upload your Sales Data</h3>
+                    <div class="card-text">
+                        @using (Html.BeginForm("ImportFile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <input name="file" type="file" accept=".xlsx" required/>
+                            <br />
+                            <input type="submit" value="Submit" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

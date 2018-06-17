@@ -1,0 +1,63 @@
+﻿@using DataFromExcel.ViewModels
+@model DataFromExcel.ViewModels.AnalysisResultsVm
+
+
+<div class="jumbotron">
+    <h1>Here you go!</h1>
+    <p class="lead">Here is your sales summary for your current and previous month.</p>
+
+</div>
+
+
+<div class="card-deck container-fluid">
+    <div class="card col-md-5 text-white bg-primary mx-auto shadow">
+        <div class="card-title">
+            Here is a list of the different products you have sold:
+        </div>
+        <div class="card-body">
+            @foreach (string product in Model.ProductList)
+            {
+                <p>@product</p>
+            }
+        </div>
+    </div>
+
+
+    <div class="card col-md-5 text-white bg-success mx-auto shadow">
+        <div class="card-title">
+            Your total sales in the submitted period was:
+        </div>
+        <div class="card-body">
+            <p>@String.Format("{0:c}", Model.SalesTotal)</p>
+
+        </div>
+    </div>
+
+</div>
+<br />
+<div class="card-group container-fluid">
+    <div class="card col-md-5 text-white bg-danger mb-3" style="max-width: 35vw;">
+        <div class="card-title">
+            So far this month, your total sales are:
+
+        </div>
+        <div class="card-body">
+            <p>@String.Format("{0:c}", Model.CurrentMoSalesTotal)</p>
+            Which puts you on pace for total monthly sales of:
+            <p>@String.Format("{0:c}", Model.CurrentMoSalesPace)</p>
+        </div>
+    </div>
+
+
+    <div class="card col-md-5 text-white bg-warning mb-3" style="max-width: 35vw;">
+        <div class="card-title">
+            For comparison, last month's total sales was:
+        </div>
+        <div class="card-body">
+            <p>@String.Format("{0:c}", Model.LastMoSalesTotal)</p>
+        </div>
+    </div>
+
+</div>
+
+
